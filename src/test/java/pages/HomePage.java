@@ -36,8 +36,8 @@ public class HomePage extends Page {
        assertTrue(driver.findElement(productCatalog).isDisplayed());
     }
 
-    public String getSuccessSignUpMessage() {
-        return Element.getText(driver.findElement(successSignUpMessageId));
+    public void checkSuccessSignUpMessage(String text) {
+        assertTrue(Element.getMessageText(successSignUpMessageId, text));
     }
 
 

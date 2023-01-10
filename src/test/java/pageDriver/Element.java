@@ -2,6 +2,7 @@ package pageDriver;
 
 import java.util.concurrent.TimeoutException;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 public class Element {
@@ -25,5 +26,9 @@ public class Element {
     public static void enterText(final WebElement element, String value) {
         ElementErrorHandling.waitForElementEnabled(element).clear();
         ElementErrorHandling.waitForElementEnabled(element).sendKeys(value);
+    }
+
+    public static Boolean getMessageText(final By element, String text) {
+        return ElementErrorHandling.waitForTextPresent(element, text);
     }
 }

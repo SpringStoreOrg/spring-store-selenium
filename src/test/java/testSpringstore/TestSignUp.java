@@ -58,14 +58,9 @@ public class TestSignUp extends BasePage {
 
         signUpPage.clickSignUpButton();
 
-        WebDriverWait wait = new WebDriverWait(BrowserInstance.driver, 30000);
-        By signUpMessageId = By.id("signUpMsg");
-        boolean isDisplayed = wait.until(
-                ExpectedConditions.textToBe(signUpMessageId, "Succesfully signed Up! Please confirm your Email!"));
-        assertTrue("Succesfully signed Up visible", isDisplayed);
 
         // Succesfully Signed Up Toast message.
-        //assertTrue(homePage.getSuccessSignUpMessage().contains("Succesfully signed Up! Please confirm your Email!"));
+        homePage.checkSuccessSignUpMessage("Succesfully signed Up! Please confirm your Email!");
 
     }
 
