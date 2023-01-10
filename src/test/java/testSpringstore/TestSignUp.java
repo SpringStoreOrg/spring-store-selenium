@@ -39,7 +39,7 @@ public class TestSignUp extends BasePage {
     }
 
     @Test
-    public void testSignUpSuccessfully() throws TimeoutException, InterruptedException {
+    public void testSignUpSuccessfully() throws TimeoutException {
         Page.navigateTo(configReader.getAppURL());
         assertEquals("Springwebstore", Page.getTitle());
 
@@ -58,17 +58,62 @@ public class TestSignUp extends BasePage {
 
         signUpPage.clickSignUpButton();
 
-        WebDriverWait wait = new WebDriverWait(BrowserInstance.driver, 30000);
-        By signUpMessageId = By.id("signUpMsg");
-        boolean isDisplayed = wait.until(
-                ExpectedConditions.textToBe(signUpMessageId, "Succesfully signed Up! Please confirm your Email!"));
-        assertTrue("Succesfully signed Up visible", isDisplayed);
 
         // Succesfully Signed Up Toast message.
-        //assertTrue(homePage.getSuccessSignUpMessage().contains("Succesfully signed Up! Please confirm your Email!"));
+        homePage.checkSuccessSignUpMessage("Succesfully signed Up! Please confirm your Email!");
+
+    }
+    @Test
+    public void testSignUpSuccessfully2() throws TimeoutException {
+        Page.navigateTo(configReader.getAppURL());
+        assertEquals("Springwebstore", Page.getTitle());
+
+        // Login
+        Constants.verificationError.append(" :Browser open with success");
+
+        homePage.clickUserButton();
+        homePage.clickSignUpButton();
+        signUpActions.signUp(userData.get("firstName").getAsString(),
+                userData.get("lastName").getAsString(),
+                userData.get("email").getAsString(),
+                userData.get("phoneNumber").getAsString(),
+                userData.get("deliveryAddress").getAsString(),
+                userData.get("password").getAsString(),
+                userData.get("confirmPassword").getAsString());
+
+        signUpPage.clickSignUpButton();
+
+
+        // Succesfully Signed Up Toast message.
+        homePage.checkSuccessSignUpMessage("Succesfully signed Up! Please confirm your Email!");
 
     }
 
+    @Test
+    public void testSignUpSuccessfully3() throws TimeoutException {
+        Page.navigateTo(configReader.getAppURL());
+        assertEquals("Springwebstore", Page.getTitle());
+
+        // Login
+        Constants.verificationError.append(" :Browser open with success");
+
+        homePage.clickUserButton();
+        homePage.clickSignUpButton();
+        signUpActions.signUp(userData.get("firstName").getAsString(),
+                userData.get("lastName").getAsString(),
+                userData.get("email").getAsString(),
+                userData.get("phoneNumber").getAsString(),
+                userData.get("deliveryAddress").getAsString(),
+                userData.get("password").getAsString(),
+                userData.get("confirmPassword").getAsString());
+
+        signUpPage.clickSignUpButton();
+
+
+        // Succesfully Signed Up Toast message.
+        homePage.checkSuccessSignUpMessage("Succesfully signed Up! Please confirm your Email!");
+
+    }
     @AfterClass
     public static void browserClose() {
         // driver.quit();

@@ -48,4 +48,16 @@ public class ElementErrorHandling {
         return usernameField;
     }
 
+    public static Boolean waitForTextPresent(final By element, String text) {
+        boolean isPresent = false;
+        WebDriverWait wait = new WebDriverWait(driver, 30000);
+        try {
+              isPresent =  wait.until(ExpectedConditions.textToBe(element, text));
+        } catch (NoSuchElementException | NoSuchWindowException | NoSuchFrameException e) {
+            Constants.verificationError.append("Element exception: " + e);
+        }
+        return isPresent;
+    }
+
+
 }
