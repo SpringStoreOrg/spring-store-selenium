@@ -89,31 +89,6 @@ public class TestSignUp extends BasePage {
 
     }
 
-    @Test
-    public void testSignUpSuccessfully3() throws TimeoutException {
-        Page.navigateTo(configReader.getAppURL());
-        assertEquals("Springwebstore", Page.getTitle());
-
-        // Login
-        Constants.verificationError.append(" :Browser open with success");
-
-        homePage.clickUserButton();
-        homePage.clickSignUpButton();
-        signUpActions.signUp(userData.get("firstName").getAsString(),
-                userData.get("lastName").getAsString(),
-                userData.get("email").getAsString(),
-                userData.get("phoneNumber").getAsString(),
-                userData.get("deliveryAddress").getAsString(),
-                userData.get("password").getAsString(),
-                userData.get("confirmPassword").getAsString());
-
-        signUpPage.clickSignUpButton();
-
-
-        // Succesfully Signed Up Toast message.
-        homePage.checkSuccessSignUpMessage("Succesfully signed Up! Please confirm your Email!");
-
-    }
     @AfterClass
     public static void browserClose() {
         // driver.quit();
