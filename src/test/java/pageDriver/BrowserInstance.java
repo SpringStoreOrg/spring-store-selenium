@@ -18,11 +18,15 @@ public class BrowserInstance {
     public static WebDriver readBrowser() {
         ConfigFileReader configReader = new ConfigFileReader();
         String browserName = configReader.getBrowserName();
+        String headless = configReader.getHeadless();
 
         if (browserName.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
             ChromeOptions options = new ChromeOptions();
-            options.addArguments("--headless", "--window-size=1920,1200");
+            options.addArguments("--window-size=1920,1200");
+            if (headless.equalsIgnoreCase("true")) {
+                options.addArguments("--headless");
+            }
             driver = new ChromeDriver(options);
             return driver;
         } else

@@ -48,4 +48,13 @@ public class ConfigFileReader
       throw new RuntimeException("browser not specified in the Configuration.properties file.");
   }
 
+  public String getHeadless()
+  {
+    String browser = properties.getProperty("HEADLESS");
+    if (browser != null)
+      return browser;
+    else
+      throw new RuntimeException("headless not specified in the Configuration.properties file.");
+  }
+
 }
