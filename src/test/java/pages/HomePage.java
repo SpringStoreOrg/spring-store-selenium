@@ -19,6 +19,7 @@ public class HomePage extends Page {
     private By signInButton = By.id("signIn");
     private By signUpButton = By.id("signUp");
     private By successSignUpMessageId = By.id("signUpMsg");
+    private By avatarId = By.id("avatar");
 
     public void clickUserButton()  {
         Element.click(driver.findElement(userButton));
@@ -37,7 +38,11 @@ public class HomePage extends Page {
     }
 
     public void checkSuccessSignUpMessage(String text) {
-        assertTrue(Element.getMessageText(successSignUpMessageId, text));
+        assertTrue(Element.getText(successSignUpMessageId, text));
+    }
+
+    public void checkAvatarLetters(String text) {
+        assertTrue(Element.getText(avatarId, text));
     }
 
 

@@ -8,15 +8,16 @@ import org.junit.Test;
 import pageDriver.Page;
 import pages.BasePage;
 import testData.TestData;
-import utility.*;
+import utility.ConfigFileReader;
+import utility.Constants;
+import utility.TestReport;
 
 import java.util.concurrent.TimeoutException;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 
-public class TestSignUp extends BasePage {
+public class TestSignIn extends BasePage {
 
     ConfigFileReader configReader = new ConfigFileReader();
 
@@ -28,11 +29,11 @@ public class TestSignUp extends BasePage {
     @Before
     public void beforeTest()  {
         Constants.verificationError = new StringBuffer();
-        userData = TestData.newSignUpUserData();
+        userData = TestData.newSignInUserData();
     }
 
     @Test
-    public void testSignUpSuccessfully() throws TimeoutException {
+    public void testSignUpSuccessfully() {
         Page.navigateTo(configReader.getAppURL());
         assertEquals("Springwebstore", Page.getTitle());
 
@@ -40,20 +41,14 @@ public class TestSignUp extends BasePage {
         Constants.verificationError.append(" :Browser open with success");
 
         homePage.clickUserButton();
-        homePage.clickSignUpButton();
-        signUpActions.signUp(userData.get("firstName").getAsString(),
-                userData.get("lastName").getAsString(),
-                userData.get("email").getAsString(),
-                userData.get("phoneNumber").getAsString(),
-                userData.get("deliveryAddress").getAsString(),
-                userData.get("password").getAsString(),
-                userData.get("confirmPassword").getAsString());
+        homePage.clickSignInButton();
+        signInActions.signIn(userData.get("email").getAsString(),
+                userData.get("password").getAsString());
 
-        signUpPage.clickSignUpButton();
+        signInPage.clickSignInButton();
 
-
-        // Succesfully Signed Up Toast message.
-        homePage.checkSuccessSignUpMessage("Succesfully signed Up! Please confirm your Email!");
+        // check Avatar letters after signed In.
+        homePage.checkAvatarLetters("JF");
     }
 
 

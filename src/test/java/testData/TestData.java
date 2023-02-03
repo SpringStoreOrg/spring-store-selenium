@@ -4,24 +4,29 @@ import com.google.gson.JsonObject;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Arrays;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 public class TestData {
 	private static final DateTimeFormatter customFormat = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
 
-	public static JsonObject newSignInUserData() {
+	public static JsonObject newSignUpUserData() {
 		String intSuffix = LocalDateTime.now().format(customFormat);
 		String charactersSuffix = getStringSuffix(intSuffix);
+		JsonObject newSignUpUser = new JsonObject();
+		newSignUpUser.addProperty("firstName", String.format("FirstName-%s", charactersSuffix));
+		newSignUpUser.addProperty("lastName", String.format("LastName-%s", charactersSuffix));
+		newSignUpUser.addProperty("phoneNumber", "0745000000");
+		newSignUpUser.addProperty("email", String.format("email%s@springstore-test.com", charactersSuffix));
+		newSignUpUser.addProperty("password", "qqqqq111");
+		newSignUpUser.addProperty("deliveryAddress", "Delivery Address");
+		newSignUpUser.addProperty("confirmPassword", "qqqqq111");
+		return newSignUpUser;
+	}
+
+	public static JsonObject newSignInUserData() {
 		JsonObject newSignInUser = new JsonObject();
-		newSignInUser.addProperty("firstName", String.format("FirstName-%s", charactersSuffix));
-		newSignInUser.addProperty("lastName", String.format("LastName-%s", charactersSuffix));
-		newSignInUser.addProperty("phoneNumber", "0745000000");
-		newSignInUser.addProperty("email", String.format("email%s@springstore-test.com", charactersSuffix));
+		newSignInUser.addProperty("email", "jellofirsthand@gaa1iler.site");
 		newSignInUser.addProperty("password", "qqqqq111");
-		newSignInUser.addProperty("deliveryAddress", "Delivery Address");
-		newSignInUser.addProperty("confirmPassword", "qqqqq111");
 		return newSignInUser;
 	}
 

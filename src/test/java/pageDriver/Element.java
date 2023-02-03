@@ -28,7 +28,7 @@ public class Element {
         ElementErrorHandling.waitForElementEnabled(element).sendKeys(value);
     }
 
-    public static Boolean getMessageText(final By element, String text) {
+    public static Boolean getText(final By element, String text) {
         return ElementErrorHandling.waitForTextPresent(element, text);
     }
 }
