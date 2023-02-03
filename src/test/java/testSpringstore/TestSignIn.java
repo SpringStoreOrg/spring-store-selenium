@@ -1,20 +1,16 @@
 package testSpringstore;
 
 import com.google.gson.JsonObject;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
+
+import org.testng.annotations.*;
 import pageDriver.Page;
 import pages.BasePage;
 import testData.TestData;
 import utility.ConfigFileReader;
 import utility.Constants;
-import utility.TestReport;
 
-import java.util.concurrent.TimeoutException;
-
-import static org.junit.Assert.assertEquals;
+import static org.testng.Assert.assertEquals;
+import static pageDriver.Page.driver;
 
 
 public class TestSignIn extends BasePage {
@@ -23,10 +19,8 @@ public class TestSignIn extends BasePage {
 
     JsonObject userData;
 
-    @Rule
-    public TestReport testReport = new TestReport();
 
-    @Before
+    @BeforeSuite
     public void beforeTest()  {
         Constants.verificationError = new StringBuffer();
         userData = TestData.newSignInUserData();
@@ -49,13 +43,18 @@ public class TestSignIn extends BasePage {
 
         // check Avatar letters after signed In.
         homePage.checkAvatarLetters("JF");
+
+        //logout
+        homePage.clickUserButton();
+        homePage.clickLogoutButton();
+
+        // check that Avatar letters are not displayed after signed Out.
+        homePage.checkIsAvatarPresent();
     }
 
-
-    @AfterClass
+    @AfterSuite
     public static void browserClose() {
-        // driver.quit();
-        Page.close();
+       Page.close();
     }
 
 }

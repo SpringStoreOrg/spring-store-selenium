@@ -1,10 +1,7 @@
 package testSpringstore;
 
 import com.google.gson.JsonObject;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
+import org.testng.annotations.*;
 import pageDriver.Page;
 import pages.BasePage;
 import testData.TestData;
@@ -12,8 +9,8 @@ import utility.*;
 
 import java.util.concurrent.TimeoutException;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.testng.Assert.assertEquals;
+import static pageDriver.Page.driver;
 
 
 public class TestSignUp extends BasePage {
@@ -22,10 +19,7 @@ public class TestSignUp extends BasePage {
 
     JsonObject userData;
 
-    @Rule
-    public TestReport testReport = new TestReport();
-
-    @Before
+    @BeforeTest
     public void beforeTest()  {
         Constants.verificationError = new StringBuffer();
         userData = TestData.newSignUpUserData();
@@ -51,15 +45,12 @@ public class TestSignUp extends BasePage {
 
         signUpPage.clickSignUpButton();
 
-
         // Succesfully Signed Up Toast message.
         homePage.checkSuccessSignUpMessage("Succesfully signed Up! Please confirm your Email!");
     }
 
-
-    @AfterClass
+    @AfterSuite
     public static void browserClose() {
-        // driver.quit();
         Page.close();
     }
 

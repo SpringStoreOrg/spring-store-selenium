@@ -5,6 +5,8 @@ import java.util.concurrent.TimeoutException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
+import static pageDriver.Page.driver;
+
 public class Element {
 
     public static void checkElementIsDisplayed(WebElement element) throws TimeoutException {
@@ -31,4 +33,14 @@ public class Element {
     public static Boolean getText(final By element, String text) {
         return ElementErrorHandling.waitForTextPresent(element, text);
     }
+
+    public static boolean isElementPresent(final By element) {
+        try {
+            driver.findElement(element);
+            return true;
+        } catch (org.openqa.selenium.NoSuchElementException e) {
+            return false;
+        }
+    }
+
 }

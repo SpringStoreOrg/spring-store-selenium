@@ -11,9 +11,9 @@ public class SignInPage extends Page {
         PageFactory.initElements(driver, this);
     }
 
-    private By emailInput = By.id("email");
-    private By passwordInput = By.id("password");
-    private By signInButton = By.id("signInButton");
+    private final By emailInput = By.id("email");
+    private final By passwordInput = By.id("password");
+    private final By signInButton = By.id("signInButton");
 
     public void enterEmail(String email) {
         Element.enterText(driver.findElement(emailInput), email);

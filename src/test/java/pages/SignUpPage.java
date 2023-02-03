@@ -11,16 +11,16 @@ public class SignUpPage extends Page {
         PageFactory.initElements(driver, this);
     }
 
-    private By userButton = By.id("userButton");
-    private By firstNameInput = By.id("firstName");
-    private By lastNameInput = By.id("lastName");
-    private By emailInput = By.id("email");
-    private By phoneNumberInput = By.id("phoneNumber");
-    private By deliveryAddressInput = By.id("deliveryAddress");
-    private By passwordInput = By.id("password");
-    private By confirmPasswordInput = By.id("confirmPassword");
-    private By signUpButton = By.id("signUpButton");
-    private By successSignUpMessageId = By.id("signUpMsg");
+    private final By userButton = By.id("userButton");
+    private final By firstNameInput = By.id("firstName");
+    private final By lastNameInput = By.id("lastName");
+    private final By emailInput = By.id("email");
+    private final By phoneNumberInput = By.id("phoneNumber");
+    private final By deliveryAddressInput = By.id("deliveryAddress");
+    private final By passwordInput = By.id("password");
+    private final By confirmPasswordInput = By.id("confirmPassword");
+    private final By signUpButton = By.id("signUpButton");
+    private final By successSignUpMessageId = By.id("signUpMsg");
 
     public void clickUserButton() {
         Element.click(driver.findElement(userButton));
