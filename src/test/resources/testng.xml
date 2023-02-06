@@ -3,8 +3,9 @@
 <suite name="User Suite">
     <test name="User">
         <classes>
-            <class name="testSpringstore.TestSignIn"/>
             <class name="testSpringstore.TestSignUp"/>
+            <class name="testSpringstore.TestSignIn"/>
+            <class name="testSpringstore.TestAddAndRemoveProductToFavorites"/>
         </classes>
     </test>
 </suite>

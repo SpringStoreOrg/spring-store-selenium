@@ -35,6 +35,7 @@ public class TestSignUp extends BasePage {
 
         homePage.clickUserButton();
         homePage.clickSignUpButton();
+
         signUpActions.signUp(userData.get("firstName").getAsString(),
                 userData.get("lastName").getAsString(),
                 userData.get("email").getAsString(),
@@ -45,8 +46,8 @@ public class TestSignUp extends BasePage {
 
         signUpPage.clickSignUpButton();
 
-        // Succesfully Signed Up Toast message.
-        homePage.checkSuccessSignUpMessage("Succesfully signed Up! Please confirm your Email!");
+        // Successfully Signed Up Toast message.
+        homePage.checkSuccessSignUpMessage();
     }
 
     @AfterSuite
