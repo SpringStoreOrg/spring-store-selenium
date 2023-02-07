@@ -20,7 +20,7 @@ public class TestAddAndRemoveProductToFavorites extends BasePage {
     JsonObject userData;
 
     @BeforeTest
-    public void beforeTest()  {
+    public void beforeTest() {
         Constants.verificationError = new StringBuffer();
         userData = TestData.newSignInUserData();
     }

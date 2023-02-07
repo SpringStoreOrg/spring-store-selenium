@@ -25,7 +25,7 @@ public class TestData {
 
 	public static JsonObject newSignInUserData() {
 		JsonObject newSignInUser = new JsonObject();
-		newSignInUser.addProperty("email", "jellofirsthand@gaa1iler.site");
+		newSignInUser.addProperty("email", "skilletcheek@gaa1iler.site");
 		newSignInUser.addProperty("password", "qqqqq111");
 		return newSignInUser;
 	}
