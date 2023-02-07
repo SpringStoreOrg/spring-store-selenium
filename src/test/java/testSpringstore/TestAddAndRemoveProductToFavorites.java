@@ -41,7 +41,7 @@ public class TestAddAndRemoveProductToFavorites extends BasePage {
         signInPage.clickSignInButton();
 
         // check Avatar letters after signed In.
-        homePage.checkAvatarLetters("JF");
+        homePage.checkAvatarLetters("SC");
 
         // Add first product to favorites
         homePage.clickFavoriteProductButton(0);
