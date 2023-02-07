@@ -42,7 +42,7 @@ public class TestSignIn extends BasePage {
         signInPage.clickSignInButton();
 
         // check Avatar letters after signed In.
-        homePage.checkAvatarLetters("JF");
+        homePage.checkAvatarLetters("SC");
 
         //logout
         homePage.clickUserButton();
