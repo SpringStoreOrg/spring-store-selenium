@@ -1,6 +1,7 @@
 package testSpringstore;
 
 import com.google.gson.JsonObject;
+import io.qameta.allure.Feature;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -25,6 +26,7 @@ public class TestAddAndRemoveProductToFavorites extends BasePage {
         userData = TestData.newSignInUserData();
     }
 
+    @Feature("Add And Remove Product To Fav Successfully")
     @Test
     public void testAddAndRemoveProductToFavSuccessfully() {
         Page.navigateTo(configReader.getAppURL());

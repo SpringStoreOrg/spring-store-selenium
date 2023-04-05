@@ -1,6 +1,7 @@
 package testSpringstore;
 
 import com.google.gson.JsonObject;
+import io.qameta.allure.Feature;
 import org.testng.annotations.*;
 import pageDriver.Page;
 import pages.BasePage;
@@ -25,6 +26,7 @@ public class TestSignUp extends BasePage {
         userData = TestData.newSignUpUserData();
     }
 
+    @Feature("SignUp Successfully")
     @Test
     public void testSignUpSuccessfully() throws TimeoutException {
         Page.navigateTo(configReader.getAppURL());

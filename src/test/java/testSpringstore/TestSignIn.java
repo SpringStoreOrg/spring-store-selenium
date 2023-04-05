@@ -2,6 +2,7 @@ package testSpringstore;
 
 import com.google.gson.JsonObject;
 
+import io.qameta.allure.Feature;
 import org.testng.annotations.*;
 import pageDriver.Page;
 import pages.BasePage;
@@ -25,9 +26,9 @@ public class TestSignIn extends BasePage {
         Constants.verificationError = new StringBuffer();
         userData = TestData.newSignInUserData();
     }
-
+    @Feature("SignIn Successfully")
     @Test
-    public void testSignUpSuccessfully() {
+    public void testSignInSuccessfully() {
         Page.navigateTo(configReader.getAppURL());
         assertEquals("Springwebstore", Page.getTitle());
 
