@@ -1,9 +1,6 @@
 package actions;
 
 import pages.SignInPage;
-import pages.SignUpPage;
-
-import java.util.concurrent.TimeoutException;
 
 public class SignInActions {
 

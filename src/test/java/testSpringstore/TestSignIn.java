@@ -30,7 +30,7 @@ public class TestSignIn extends BasePage {
     @Test
     public void testSignInSuccessfully() {
         Page.navigateTo(configReader.getAppURL());
-        assertEquals("Springwebstore", Page.getTitle());
+        assertEquals(Page.getTitle(), "Springwebstore");
 
         // Login
         Constants.verificationError.append(" :Browser open with success");

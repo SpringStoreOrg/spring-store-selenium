@@ -11,7 +11,6 @@ import utility.*;
 import java.util.concurrent.TimeoutException;
 
 import static org.testng.Assert.assertEquals;
-import static pageDriver.Page.driver;
 
 
 public class TestSignUp extends BasePage {
@@ -30,7 +29,7 @@ public class TestSignUp extends BasePage {
     @Test
     public void testSignUpSuccessfully() throws TimeoutException {
         Page.navigateTo(configReader.getAppURL());
-        assertEquals("Springwebstore", Page.getTitle());
+        assertEquals(Page.getTitle(), "Springwebstore");
 
         // Login
         Constants.verificationError.append(" :Browser open with success");

@@ -32,7 +32,7 @@ public class TestData {
 
 	private static String getStringSuffix(String inputString) {
 		return inputString.chars()
-				.mapToObj(element -> getCharForNumber(element))
+				.mapToObj(TestData::getCharForNumber)
 				.collect(Collectors.joining());
 	}
 

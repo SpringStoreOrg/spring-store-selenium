@@ -1,21 +1,22 @@
 package utility;
 
 import java.io.*;
+import java.util.Objects;
 import java.util.Properties;
 
 public class ConfigFileReader
 {
 
-  private Properties   properties;
-  private final String propertyFilePath = "config//config.properties";
+  private final Properties properties;
+
   // loads config file
   public ConfigFileReader()
   {
     BufferedReader reader;
     try
     {
-      String basePath = ConfigFileReader.class.getResource("/").getPath();
-      reader = new BufferedReader(new FileReader(new File(basePath, propertyFilePath)));
+      String basePath = Objects.requireNonNull(ConfigFileReader.class.getResource("/")).getPath();
+      reader = new BufferedReader(new FileReader(new File(basePath, "config//config.properties")));
       properties = new Properties();
       try
       {
@@ -28,7 +29,7 @@ public class ConfigFileReader
     } catch (FileNotFoundException e)
     {
       e.printStackTrace();
-      throw new RuntimeException("Configuration.properties not found at " + propertyFilePath);
+      throw new RuntimeException("config.properties file not found!");
     }
   }
   public String getAppURL()
@@ -37,7 +38,7 @@ public class ConfigFileReader
     if (url != null)
       return url;
     else
-      throw new RuntimeException("url not specified in the Configuration.properties file.");
+      throw new RuntimeException("url not specified in the config.properties file.");
   }
   public String getBrowserName()
   {
@@ -45,7 +46,7 @@ public class ConfigFileReader
     if (browser != null)
       return browser;
     else
-      throw new RuntimeException("browser not specified in the Configuration.properties file.");
+      throw new RuntimeException("browser not specified in the config.properties file.");
   }
 
   public String getHeadless()
@@ -54,7 +55,7 @@ public class ConfigFileReader
     if (browser != null)
       return browser;
     else
-      throw new RuntimeException("headless not specified in the Configuration.properties file.");
+      throw new RuntimeException("headless not specified in the config.properties file.");
   }
 
 }
