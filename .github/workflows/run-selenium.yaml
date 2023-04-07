@@ -21,6 +21,20 @@ jobs:
       # Checkout the code as the first step.
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Install latest version of Chrome
+        run: |
+          sudo wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub |   sudo apt-key add -
+          sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
+          sudo apt-get update
+          sudo apt-get -y install google-chrome-stable
+      - name: Use ChromeDriver found in repository
+        run: |
+          sudo chmod 777 /home/circleci/circleCiTesting/resources/windows/chromedriver.exe
+          sudo apt-get install libxi6 libgconf-2-4
+          sudo apt-get -y install xvfb gtk2-engines-pixbuf
+          sudo apt-get -y install xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable
+          sudo apt-get install xvfb
+          sudo apt-get -y install imagemagick x11-apps
       - name: Running X virtual framebuffer
         run: |
            Xvfb :0 -ac &
