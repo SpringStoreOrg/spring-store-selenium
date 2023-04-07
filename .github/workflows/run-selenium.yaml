@@ -1,0 +1,38 @@
+name: Run Selenium tests
+
+on:
+#   schedule:
+#     - cron: '0 5 * * 1-5'
+  push:
+    branches:
+      - "feature/github-actions"
+  pull_request:
+    branches:
+      - "main"
+
+jobs:
+  run-selenium-tests:
+    runs-on: ubuntu-latest
+    container: cimg/openjdk:11.0
+    env:
+      MAVEN_OPTS: -Xmx3200m
+      DISPLAY: :99
+    steps:
+      # Checkout the code as the first step.
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Running X virtual framebuffer
+        run: |
+           Xvfb :0 -ac &
+    #   - name: Run Tests
+    #     run: |
+    #       export DISPLAY=:99
+        # - save_cache:
+        #     paths:
+        #       - ~/.m2
+        #     key: v1-dependencies-{{ checksum "pom.xml" }}
+          
+        # run tests!
+      - name: Run Tests
+        run: |
+          mvn test
