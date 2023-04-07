@@ -16,7 +16,6 @@ jobs:
     container: cimg/openjdk:11.0
     env:
       MAVEN_OPTS: -Xmx3200m
-      DISPLAY: :99
     steps:
       # Checkout the code as the first step.
       - name: Checkout
@@ -37,9 +36,9 @@ jobs:
       - name: Running X virtual framebuffer
         run: |
            Xvfb :0 -ac &
-    #   - name: Run Tests
-    #     run: |
-    #       export DISPLAY=:99
+      - name: Export var
+        run: |
+          export DISPLAY=:99
         # - save_cache:
         #     paths:
         #       - ~/.m2
