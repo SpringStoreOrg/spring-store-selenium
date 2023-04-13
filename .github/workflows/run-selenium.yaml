@@ -24,13 +24,10 @@ jobs:
         uses: actions/setup-java@v3
         with:
           java-version: '11'
-          distribution: 'adopt'
+          distribution: 'temurin'
           cache: maven
 
         # run tests!
-      - name: Run Tests
-        run: |
-          mvn test
       - name: Run Test
         if: always()
         run: mvn package
