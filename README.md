@@ -1,4 +1,4 @@
-[![CircleCI](https://circleci.com/gh/SpringStoreOrg/spring-store-selenium.svg?style=shield)](https://app.circleci.com/pipelines/github/SpringStoreOrg/spring-store-selenium?branch=main) [![Maven](https://badgen.net/badge/icon/maven?icon=maven&label)](https://https://maven.apache.org/)
+[![Run Selenium Tests](https://github.com/SpringStoreOrg/spring-store-selenium/actions/workflows/run-selenium.yaml/badge.svg)](https://github.com/SpringStoreOrg/spring-store-selenium/actions/workflows/run-selenium.yaml)   [![Maven](https://badgen.net/badge/icon/maven?icon=maven&label)](https://https://maven.apache.org/)
 [![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/Naereen/badges/)
 
 # Spring Store Selenium Project  
