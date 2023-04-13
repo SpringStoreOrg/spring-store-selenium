@@ -5,7 +5,7 @@ on:
 #     - cron: '0 5 * * 1-5'
   push:
     branches:
-      - "feature/github-actions"
+      - "main"
   pull_request:
     branches:
       - "main"
