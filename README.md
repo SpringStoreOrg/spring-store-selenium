@@ -13,7 +13,7 @@ This project is built on Selenium with Page Factory design pattern and makes use
 All the test cases, test data, page objects, configurations and utilities are within the package src/test/java
 At the moment test can be run on Chrome browser only, in future we can add support for other browsers as well.
 
-#Test Map of the application
+## Test Map of the application
 ![Swagger UI](src/test/resources/img/image_testmap.png)
 
 ## How to Run
