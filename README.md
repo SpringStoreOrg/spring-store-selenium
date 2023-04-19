@@ -1,7 +1,7 @@
 [![Run Selenium Tests](https://github.com/SpringStoreOrg/spring-store-selenium/actions/workflows/run-selenium.yaml/badge.svg)](https://github.com/SpringStoreOrg/spring-store-selenium/actions/workflows/run-selenium.yaml)   [![Maven](https://badgen.net/badge/icon/maven?icon=maven&label)](https://https://maven.apache.org/)
 [![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/Naereen/badges/)
 
-# SpringStore Selenium Project  
+# Springwebstore Selenium Project  
 
 This is a Java / Maven / Selenium Test automation project built on Page Factory design.
 
