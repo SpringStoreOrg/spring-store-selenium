@@ -4,8 +4,8 @@ on:
   push:
     branches:
       - "feature/remove-old-files"
-  schedule:
-    - cron: '0 3 * * 5' # Runs every Friday at 6 AM EEST (UTC+3)
+  # schedule:
+  #   - cron: '0 3 * * 5' # Runs every Friday at 6 AM EEST (UTC+3)
 
 jobs:
   remove_old_files:
