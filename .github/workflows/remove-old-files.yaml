@@ -17,24 +17,25 @@ jobs:
           ref: gh-pages
           fetch-depth: 0
 
-      - name: Remove inactive files
+      - name: Remove old files
         run: |
-          ls -la
-          find . \( -path "./.git" -o -path "./.github" \) -prune -o -type f ! -name "README.md" ! -name "LICENSE" -mtime +13 -print0 | xargs -0 git rm -f
-          find . -type d -empty -delete
+          # Define the number of days since the last commit
+          LAST_COMMIT_DAYS=$(( ($(date +%s) - $(git log -1 --pretty=format:%ct) ) / 86400 ))
+
           ls -ls
+          # Loop over all files and directories in the repository
+          while IFS= read -r FILE; do
+            # Check if the file or directory has been committed in the last 13 days
+            if [[ $(git log -1 --pretty=format:%ct -- "${FILE}") -lt $(date -d '13 days ago' +%s) ]]; then
+              # If the file or directory hasn't been committed in the last 13 days, remove it
+              rm -rf "${FILE}"
+              echo "Removed ${FILE}"
+            fi
+          done < <(find . -mindepth 1 -maxdepth 1 -not -path '*/\.*' -not -path './.git*' -not -path './.github*')
+          ls -la
 
-        working-directory: ${{ github.workspace }}
-        env:
-          TZ: Europe/Helsinki
-
-      - name: Remove inactive files
-        run: |
-          # Commit the changes
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-          git add .
-          git commit -m "Removed inactive files (last commit: $(git log -1 --pretty=format:'%cd'))"
-
-          # Push the changes
-          git push
+          # Commit changes
+          # git config --global user.email "github-actions@github.com"
+          # git config --global user.name "GitHub Actions"
+          # git commit -am "Remove old files (last commit $LAST_COMMIT_DAYS days ago)"
+          # git push
