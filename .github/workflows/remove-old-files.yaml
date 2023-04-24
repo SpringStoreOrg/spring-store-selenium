@@ -1,0 +1,32 @@
+name: Remove old files and directories
+
+on:
+  push:
+    branches:
+      - "feature/remove-old-files"
+  schedule:
+    - cron: '0 3 * * 5' # Runs every Friday at 6 AM EEST (UTC+3)
+
+jobs:
+  remove_old_files:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Remove old files and directories
+        run: |
+          pwd
+          ls -la
+          git init
+          git remote add origin "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
+          git config --global user.email "my-bot@bot.com"
+          git config --global user.name "my-bot"
+          git fetch
+          git checkout gh-pages
+          git branch --set-upstream-to=origin/gh-pages
+          git pull
+          ls -la
+          find . -type f -mtime +13 -delete
+          find . -type d -mtime +13 -empty -delete
+          ls -la
+          git add -A
+          git commit -m "Remove old files and directories"
+          git push
