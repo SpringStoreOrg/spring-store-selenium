@@ -18,8 +18,10 @@ jobs:
 
       - name: Remove old files and directories
         run: |
+          ls -la
           find . -type f -mtime +13 -delete
           find . -type d -mtime +13 -empty -delete
+          ls -ls
 
       - name: Commit changes
         uses: actions/github-script@v4
