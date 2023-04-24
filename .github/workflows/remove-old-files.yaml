@@ -17,24 +17,19 @@ jobs:
           ref: gh-pages
           fetch-depth: 0
 
-      - name: Find inactive files
+      - name: Remove inactive files
         run: |
           ls -la
-          # Find files and directories that haven't been modified by a commit in the last 13 days
-          inactive_files=$(find . -type f,d -mtime +7 -not -path "./.git/*" -not -path "./.github/*")
+          find . \( -path "./.git" -o -path "./.github" \) -prune -o -type f ! -name "README.md" ! -name "LICENSE" -mtime +13 -print0 | xargs -0 git rm -f
+          find . -type d -empty -delete
+          ls -ls
 
-          # Print the list of inactive files for debugging
-          echo "Inactive files:"
-          echo "$inactive_files"
-          ls -la
+        working-directory: ${{ github.workspace }}
+        env:
+          TZ: Europe/Helsinki
 
       - name: Remove inactive files
-        if: ${{ env.inactive_files != '' }}
         run: |
-          # Remove the inactive files
-          echo "Removing inactive files..."
-          rm -rf $inactive_files
-
           # Commit the changes
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
