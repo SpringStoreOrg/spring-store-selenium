@@ -15,21 +15,29 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: gh-pages
+          fetch-depth: 0
 
-      - name: Remove old files and directories
+      - name: Find inactive files
         run: |
-          ls -la
-          find . -type f -mtime +13 -delete
-          find . -type d -mtime +13 -empty -delete
-          ls -ls
+          # Find files and directories that haven't been modified by a commit in the last 13 days
+          inactive_files=$(find . -type f,d -mtime +13 -not -path "./.git/*" -not -path "./.github/*")
 
-      - name: Commit changes
-        uses: actions/github-script@v4
-        with:
-          script: |
-            git config user.name "${{ github.actor }}"
-            git config user.email "${{ github.actor }}@users.noreply.github.com"
-            git add .
-            git commit -m "Remove old files and directories"
-            git push origin gh-pages
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          # Print the list of inactive files for debugging
+          echo "Inactive files:"
+          echo "$inactive_files"
+
+      - name: Remove inactive files
+        if: ${{ env.inactive_files != '' }}
+        run: |
+          # Remove the inactive files
+          echo "Removing inactive files..."
+          rm -rf $inactive_files
+
+          # Commit the changes
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add .
+          git commit -m "Removed inactive files (last commit: $(git log -1 --pretty=format:'%cd'))"
+
+          # Push the changes
+          git push
