@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Thu Jun 15 05:09:03 GMT 2023","Thu Jun 15 05:09:08 GMT 2023","4431","Springstore UI Tests","Regression","testSpringstore.TestSignIn","testSpringstore.TestSignIn","testSignInSuccessfully","testSignInSuccessfully",""
+"passed","Thu Jun 15 05:09:08 GMT 2023","Thu Jun 15 05:09:15 GMT 2023","7147","Springstore UI Tests","Regression","testSpringstore.TestAddAndRemoveProductToFavorites","testSpringstore.TestAddAndRemoveProductToFavorites","testAddAndRemoveProductToFavSuccessfully","testAddAndRemoveProductToFavSuccessfully",""
+"passed","Thu Jun 15 05:08:56 GMT 2023","Thu Jun 15 05:09:03 GMT 2023","7341","Springstore UI Tests","Regression","testSpringstore.TestSignUp","testSpringstore.TestSignUp","testSignUpSuccessfully","testSignUpSuccessfully",""
